@@ -55,7 +55,7 @@ var items = [
                                       ["alien_blue.png", "alien_grey.png", "alien_red.png"],
                                       ["alien_blue.png", "alien_grey.png", "alien_red.png"]
                                     ]),
-                   Covered: newAliens([
+                  Covered: newAliens([
                                       ["CoveredBox.png", "alien_grey.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "alien_grey.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "alien_grey.png", "CoveredBox.png"],
@@ -70,8 +70,9 @@ var items = [
            function(t){ t.enabled = true; },         // Enable validation
            "Press F or J",
            {this: "answers", showKeys: "bottom", waitFor: true}
-         ];
+         ]
     }
+  ]
 ];
 
 /*GetItemsFrom(data, null, {
@@ -121,7 +122,7 @@ var items = [
 
     ["instruct", "Form", {html: {include: "ID.html"}, continueOnReturn: true}],
 
-    ["instruct", "Form", {  html: { include: "Instructions.html" }}], 
+    ["instruct", "Form", {  html: { include: "Instructions.html" }}],
            
            
     // FIRST PRACTICE ITEM (TRUE)
@@ -138,19 +139,19 @@ var items = [
       legend: "practice",
       randomOrder: null, // For the practice items, we want to manually order the visible vs covered images
       answers: {
-                 Target: ["F", newAliens([  ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"], 
+                 Target: ["F", newAliens([  ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
                                             ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
-                                            ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"], 
                                             ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
-                                            ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"], 
+                                            ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
+                                            ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
                                             ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"],
                                             ["alien_blue1.png", "alien_grey1.png", "alien_yellow1.png"]
                                    ])],
-                 Covered: ["J", newAliens([ ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                 Covered: ["J", newAliens([ ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                             ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                            ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
                                             ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                            ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                                            ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
+                                            ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                             ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                             ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"]
                                    ])]
@@ -223,19 +224,19 @@ var items = [
       legend: "practice",
       randomOrder: null, // For the practice items, we want to manually order the visible vs covered images
       answers: {
-                 Covered: ["F", newAliens([   ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                 Covered: ["F", newAliens([   ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
+                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"]
                                    ])],
-                 Target: ["J", newAliens([    ["alien_red1.png", "alien_grey1.png", "alien_red1.png"], 
+                 Target: ["J", newAliens([    ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
                                               ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
-                                              ["alien_red1.png", "alien_grey1.png", "alien_red1.png"], 
                                               ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
-                                              ["alien_red1.png", "alien_grey1.png", "alien_red1.png"], 
+                                              ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
+                                              ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
                                               ["alien_red1.png", "alien_grey1.png", "alien_green1.png"],
                                               ["alien_red1.png", "alien_grey1.png", "alien_green1.png"]
                                    ])]
@@ -280,19 +281,19 @@ var items = [
       legend: "practice",
       randomOrder: null, // For the practice items, we want to manually order the visible vs covered images
       answers: {
-                 Covered: ["F", newAliens([   ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                 Covered: ["F", newAliens([   ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
-                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"], 
+                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
+                                              ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"],
                                               ["CoveredBox.png", "alien_grey1.png", "CoveredBox.png"]
                                    ])],
-                 Target: ["J", newAliens([    ["alien_red1.png", "alien_grey1.png", "alien_red1.png"], 
+                 Target: ["J", newAliens([    ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
                                               ["alien_blue1.png", "alien_grey1.png", "alien_blue1.png"],
-                                              ["alien_green1.png", "alien_grey1.png", "alien_green1.png"], 
+                                              ["alien_green1.png", "alien_grey1.png", "alien_green1.png"],
                                               ["alien_pink.png", "alien_grey1.png", "alien_pink.png"],
-                                              ["alien_yellow1.png", "alien_grey1.png", "alien_yellow1.png"], 
+                                              ["alien_yellow1.png", "alien_grey1.png", "alien_yellow1.png"],
                                               ["alien_red1.png", "alien_grey1.png", "alien_red1.png"],
                                               ["alien_red1.png", "alien_grey1.png", "alien_red1.png"]
                                    ])]
@@ -327,10 +328,10 @@ var items = [
                     setTimeout(function() {
                       console.log(t.pressedKey);
                       if ("J".match(t.pressedKey))
-                        TT("#Target", "Right: in this picture indeed every alien was the same color on his Home Planet as on Planet B.", 
+                        TT("#Target", "Right: in this picture indeed every alien was the same color on his Home Planet as on Planet B.",
                            "<b>We will now start the actual experiment. Press Space if you're ready to continue to the experiment.</b>", "tc")(t);
                       else if ("F".match(t.pressedKey))
-                        TT("#Covered", "<span style='color: red;'>Wrong: in the visible picture, every alien was the same color on his Home Planet as on Planet B.</span>", 
+                        TT("#Covered", "<span style='color: red;'>Wrong: in the visible picture, every alien was the same color on his Home Planet as on Planet B.</span>",
                            "<b>We will now start the actual experiment. Press Space if you're ready to continue to the experiment.</b>", "tc")(t);
                     }, 12);
                   },
