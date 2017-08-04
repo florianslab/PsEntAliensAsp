@@ -24,9 +24,9 @@ function newAliens(arrayOfColorTriples, id) {
 
     var arrowWidth = 170,     // The width of the arrow image as to be printed on the screen
         arrowXOffset = -15,   // The horizontal offset for positionning the arrow between two aliens
-        alienLeft = {left: 105, top: 20, width: 80, height:50},
-        alienMiddle = {left:alienLeft.left+alienLeft.width+arrowWidth+2*arrowXOffset, top: 0, width: 80, height:50},
-        alienRight = {left: alienMiddle.left+alienMiddle.width+arrowWidth+2*arrowXOffset, top: 0, width: 80, height:50}; 
+        alienLeft = {left: 105, top: 60, width: 80, height:50},
+        alienMiddle = {left:alienLeft.left+alienLeft.width+arrowWidth+2*arrowXOffset, top: 60, width: 80, height:50},
+        alienRight = {left: alienMiddle.left+alienMiddle.width+arrowWidth+2*arrowXOffset, top: 60, width: 80, height:50}; 
     
     if (typeof id != "string") id = "alien";     // Giving an ID to the picture
     
