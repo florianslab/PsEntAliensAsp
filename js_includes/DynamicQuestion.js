@@ -1,10 +1,12 @@
 //###########################
 //
-// last edit: 08-31-2016 by Jeremy
+// PRELOADER CONTROLLER
+//
+// last edit: 06-15-2017 by Jeremy
 //
 // History of changes:
-//  - 08-31-2016:
-//      + Re-implemented the possibility to use {this: ...} in a general way (lost in course of the previous modifications)
+//  - 06-15-2017:
+//      + Added 'type' to audio sources
 //  - 04-08-2016:
 //      + Modified 'answers' so that it accepts non-string values (jQuery Objects)
 //  - 04-06-2016:
@@ -172,7 +174,6 @@ jqueryWidget: {
             //for (el in next) {
             for (var el = next.length-1; el >= 0; --el) {
                 var child = t.element.children()[next[el]];
-                $(child).css("display", "");
                 if (child.nodeName == "AUDIO")
                     child.play();
                 else if (child.nodeName == "PAUSE") {
@@ -182,8 +183,7 @@ jqueryWidget: {
                       (function(keys,next, RT) {
                         t.unpause = function(key)
                         {
-                          t.pressedKey = String.fromCharCode(key);
-                          if (keys.length == 0 || keys.toUpperCase().match(t.pressedKey)) {
+                          if (keys.length == 0 || keys.toUpperCase().match(String.fromCharCode(key))) {
                               t.unpause = null;
                               showNext(next.split(","), RT);
                           }
@@ -204,6 +204,8 @@ jqueryWidget: {
                 //    t.elements[next[el]].func(t);
                 else if (typeof t.elements[next[el]] == "function")
                     t.elements[next[el]](t);
+                else
+                    $(child).css("display", "");
                 if (t.autoScroll) {
                     window.scrollTo(0,document.body.scrollHeight);
               }
@@ -287,9 +289,12 @@ jqueryWidget: {
           }
             // Audio file
           else if (currentElement.hasOwnProperty("audio")) {
+              var type = "audio/mpeg";
+              if (currentElement.hasOwnProperty("type")) type = currentElement.type;
               domelements[el] = $('<audio />', { controls : 'controls', preload : 'auto' });
-              domelements[el].append($(document.createElement("source")).attr("src",currentElement.audio)).attr("controls","");
-              if (currentElement.show == "none") domelements[el].addClass("display", "none");
+              domelements[el].append($(document.createElement("source")).attr({"src": currentElement.audio,
+                                                                               "type": type}));
+              if (currentElement.show == "none") domelements[el].css("display", "none");
               var wait = function () { };
               if (currentElement.hasOwnProperty("waitFor")) {
                   // Have to use this hack (IIFE) to make sure "elementsToShow" is interpreted right away
@@ -307,8 +312,11 @@ jqueryWidget: {
           }
             // Printing one the non-element items of the control
           else if (currentElement.hasOwnProperty("this")) {
+              // The context element
+            if (currentElement.this == "context")
+              domelements[el] = $(document.createElement("p")).append(this.context);
               // Choice between the answers
-            if (currentElement.this == "answers") {
+            else if (currentElement.this == "answers") {
               // The TR where the answers will be displayed
               this.xl = $(document.createElement("tr"));
               // If a position to show the keys to press has been provided
@@ -394,8 +402,8 @@ jqueryWidget: {
                   else if (currentElement.showKeys == "bottom") table.append(this.keyLabels);
               }
             }
-            else if (this.options.hasOwnProperty(currentElement.this))
-                domelements[el] = $("<div>").append(this.options[currentElement.this]);
+            else if (currentElement.this == "legend")
+                domelements[el].append($(document.createElement("p")).append(currentElement.question).addClass(this.cssPrefix+"legend"));
             else
                 assert(1==2, "Unrecognized value for 'this' ('"+currentElement.this+"') in DynamicQuestion");
                 
@@ -453,8 +461,7 @@ jqueryWidget: {
                 (function(keys,next, RT) {
                   t.unpause = function(key)
                   {
-                    t.pressedKey = String.fromCharCode(key);
-                    if (keys.length == 0 || keys.toUpperCase().match(t.pressedKey)) {
+                    if (keys.length == 0 || keys.toUpperCase().match(String.fromCharCode(key))) {
                       t.unpause = null;
                       showNext(next, RT);
                     }
