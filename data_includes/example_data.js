@@ -45,15 +45,18 @@ var items = [
 
   ["test", "ZipPreloader", {}],
 
+
+  // AGAIN
+  //
   ["test", "DynamicQuestion", {
 
          legend: "test",
          randomOrder: ["F", "J"],
          answers: {
                   Target: newAliens([ ["alien_red.png", "alien_grey.png", "alien_red.png"],
+                                      ["alien_red.png", "alien_grey.png", "alien_blue.png"],
                                       ["alien_blue.png", "alien_grey.png", "alien_red.png"],
-                                      ["alien_blue.png", "alien_grey.png", "alien_red.png"],
-                                      ["alien_blue.png", "alien_grey.png", "alien_red.png"]
+                                      ["alien_blue.png", "alien_grey.png", "alien_blue.png"]
                                     ]),
                   Covered: newAliens([
                                       ["CoveredBox.png", "alien_grey.png", "CoveredBox.png"],
@@ -65,14 +68,189 @@ var items = [
          enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
 
          sequence: [
-           "test",
+           "These four aliens had to leave their home planet. On Planet A, they all lost their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },    
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
-           function(t){ t.enabled = true; },         // Enable validation
-           "Press F or J",
-           {this: "answers", showKeys: "bottom", waitFor: true}
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien was red again on Planet B.",
+           "Press F or J"
+         ]
+    }
+  ],
+          
+  // CONTINUE
+  //     
+  ["test", "DynamicQuestion", {
+
+         legend: "test",
+         randomOrder: ["F", "J"],
+         answers: {
+                  Target: newAliens([ ["alien_red.png", "alien_red.png", "alien_red.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_blue.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_blue.png"]
+                                    ]),
+                  Covered: newAliens([
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
+                                    ])
+         },
+         enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
+
+         sequence: [
+           "These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
+           {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien continued being red on Planet B.",
+           "Press F or J"
+         ]
+    }
+  ],
+
+  // START
+  //     
+  ["test", "DynamicQuestion", {
+
+         legend: "test",
+         randomOrder: ["F", "J"],
+         answers: {
+                  Target: newAliens([ ["alien_blue.png", "alien_blue.png", "alien_red.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_blue.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_blue.png"]
+                                    ]),
+                  Covered: newAliens([
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
+                                    ])
+         },
+         enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
+
+         sequence: [
+           "These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
+           {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien started to be red on Planet B.",
+           "Press F or J"
+         ]
+    }
+  ],
+
+  // STOP
+  //     
+  ["test", "DynamicQuestion", {
+
+         legend: "test",
+         randomOrder: ["F", "J"],
+         answers: {
+                  Target: newAliens([ ["alien_red.png", "alien_red.png", "alien_blue.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_blue.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"]
+                                    ]),
+                  Covered: newAliens([
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
+                                    ])
+         },
+         enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
+
+         sequence: [
+           "These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
+           {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien stopped being red on Planet B.",
+           "Press F or J"
+         ]
+    }
+  ],
+
+  // STILL
+  //     
+  ["test", "DynamicQuestion", {
+
+         legend: "test",
+         randomOrder: ["F", "J"],
+         answers: {
+                  Target: newAliens([ ["alien_red.png", "alien_red.png", "alien_red.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_blue.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_blue.png"]
+                                    ]),
+                  Covered: newAliens([
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
+                                    ])
+         },
+         enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
+
+         sequence: [
+           "These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
+           {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien still was red on Planet B.",
+           "Press F or J"
+         ]
+    }
+  ],
+
+  // ANYMORE
+  //     
+  ["test", "DynamicQuestion", {
+
+         legend: "test",
+         randomOrder: ["F", "J"],
+         answers: {
+                  Target: newAliens([ ["alien_red.png", "alien_red.png", "alien_blue.png"],
+                                      ["alien_red.png", "alien_red.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_blue.png"],
+                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"]
+                                    ]),
+                  Covered: newAliens([
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
+                                      ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
+                                    ])
+         },
+         enabled: false,                             // The user won't validate the trial by clicking/pressing the key.
+
+         sequence: [
+           "These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
+           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
+           {this: "answers", showKeys: "bottom"},
+           function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
+           {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
+           function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
+           "Exactly one alien wasn't red anymore on Planet B.",
+           "Press F or J"
          ]
     }
   ]
+
+
 ];
 
 /*GetItemsFrom(data, null, {
@@ -345,4 +523,3 @@ var items = [
     
          
 */
-    
