@@ -36,7 +36,7 @@ var defaults = [
     },
 ];
 
-var zipFiles = {images: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Images.zip"
+var zipFiles = {images: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Images.zip",
                 sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Sentences.zip"};
 //
 // ##########################################################################
@@ -69,13 +69,13 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, they all lost their colors, but then they moved on to Planet B.",
-           {audio: "discontinuous.ogg", waitFor: true},
+           {audio: "discontinuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },    
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
-           {audio: "redagain.ogg"},
+           {audio: "redagain.mp3"},
            //"Exactly one alien was red again on Planet B.",
            "Press F or J"
          ]
@@ -105,13 +105,13 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
-           {audio: "continuous.ogg", waitFor: true},
+           {audio: "continuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
-           {audio: "redcontinue.ogg"},
+           {audio: "redcontinue.mp3"},
            //"Exactly one alien continued being red on Planet B.",
            "Press F or J"
          ]
@@ -141,13 +141,13 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
-           {audio: "discontinuous.ogg", waitFor: true},
+           {audio: "discontinuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
-           {audio: "redstart.ogg"},
+           {audio: "redstart.mp3"},
            //"Exactly one alien started to be red on Planet B.",
            "Press F or J"
          ]
@@ -177,14 +177,14 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
-           {audio: "continuous.ogg", waitFor: true},
+           {audio: "continuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
            //"Exactly one alien stopped being red on Planet B.",
-           {audio: "redstop.ogg", waitFor: true},
+           {audio: "redstop.mp3", waitFor: true},
            "Press F or J"
          ]
     }
@@ -213,13 +213,13 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
-           {audio: "continuous.ogg", waitFor: true},
+           {audio: "continuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
-           {audio: "redstill.ogg"},
+           {audio: "redstill.mp3"},
            //"Exactly one alien still was red on Planet B.",
            "Press F or J"
          ]
@@ -249,13 +249,13 @@ var items = [
 
          sequence: [
            //"These four aliens had to leave their home planet. On Planet A, nothing happened to their colors, but then they moved on to Planet B.",
-           {audio: "continuous.ogg", waitFor: true},
+           {audio: "continuous.mp3", waitFor: true},
            $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
            {this: "answers", showKeys: "bottom"},
            function(t){ $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","none"); },   
            {pause: "key ", newRT: true},             // Wait for the participant to press the space bar and records a new RT when they do
            function(t){ t.enabled = true; $("#press_space").css("display", "none"); $("div[id*='AlienRight'], div[id*='alienArrowMiddle']").css("display","block"); },         // Enable validation
-           {audio: "redanymore.ogg", waitFor: true},
+           {audio: "redanymore.mp3", waitFor: true},
            //"Exactly one alien wasn't red anymore on Planet B.",
            "Press F or J"
          ]
