@@ -12,7 +12,7 @@ function getUrlPic(picture) { return "url("+picture+")"; }
 //               ["alien_green.png", "alien_green.png"]
 //             ]);
 //   returns a clic2uncover complex picture showing 3 thinking aliens.
-function newAliens(arrayOfColorTriples, id) {
+function newAliens(arrayOfColorTriples, planets, id) {
     
     var background = "planets.png", // The picture used as a background 
         arrows = "arrow.png";       // The picture of the arrow between each alien in a row
@@ -78,8 +78,25 @@ function newAliens(arrayOfColorTriples, id) {
         patches.push(arrowLeftMiddle);
     }
 
+    patches.push({left:80, top:425, width:140, height:30, id:"homePlanet"}); 
+    patches.push({left:295, top:425, width:140, height:30, id:"planetA"}); 
+    patches.push({left:505, top:425, width:140, height:30, id:"planetB"});
+
+    var picture = c2u.newPicture(patches, {width: backgroundWidth, height: backgroundHeight});
+
+    var homePlanet = "Home", planetA = "Planet A", planetB = "Planet B";
+
+    if (Array.isArray(planets) && planets.length == 2){
+        if (typeof planets[0] == "string") planetA = planets[0];
+        if (typeof planets[1] == "string") planetB = planets[1];
+    }
+
+    picture.children("#homePlanet").html(homePlanet).css("border","solid 1px black");
+    picture.children("#planetA").html(planetA).css("border","solid 1px black");
+    picture.children("#planetB").html(planetB).css("border","solid 1px black");
+
     // Returns the click2uncover element, containing the patches, and whose size is determined by bigAlien
-    return c2u.newPicture(patches, {width: backgroundWidth, height: backgroundHeight});
+    return picture;
 }
 //
 // ##################################################################

@@ -117,6 +117,7 @@ jqueryWidget: {
         this.randomOrder = dget(this.options, "randomOrder", ! (this.hasCorrect === false));
         this.enabled = dget(this.options, "enabled", true);
         this.unpause = null;
+        this.pressedKey = null;
 
         assert(typeof this.answers == "object", "'answers' must be an object");
 
@@ -185,6 +186,7 @@ jqueryWidget: {
                         {
                           if (keys.length == 0 || keys.toUpperCase().match(String.fromCharCode(key))) {
                               t.unpause = null;
+                              t.pressedKey = String.fromCharCode(key);
                               showNext(next.split(","), RT);
                           }
                         };
@@ -430,8 +432,10 @@ jqueryWidget: {
                       for (i in t.orderedAnswers) {
                         var answer = t.orderedAnswers[i];
                         if ((Array.isArray(t.randomOrder) && e.keyCode == t.randomOrder[i].toUpperCase().charCodeAt(0)) ||
-                            (!Array.isArray(t.randomOrder) && e.keyCode == t.answers[answer][0].toUpperCase().charCodeAt(0)))
+                            (!Array.isArray(t.randomOrder) && e.keyCode == t.answers[answer][0].toUpperCase().charCodeAt(0))){
+                             t.pressedKey = e.keyChar;
                              __Question_callback__(answer);
+                         }
                 }
               }
             }
