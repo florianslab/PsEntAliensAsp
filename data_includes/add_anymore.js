@@ -181,19 +181,21 @@ anymoreItems = [
         legend: function(row){return[row.item,row.Expt,row.Condition,row.Trigger,row.Critical,
                                      row.Predict,row.group,row.ColorTest,row.ColorFill,row.ColorCheck].join("+");},
         randomOrder: ["F","J"],
-        answers: function(x){return {
-                  Target: newAliens([ [x.Alien1Planet1, x.Alien1Planet2, x.Alien1Planet3],
+        answers: function(x){
+                  var visible = shuffleArray([[x.Alien1Planet1, x.Alien1Planet2, x.Alien1Planet3],
                                       [x.Alien2Planet1, x.Alien2Planet2, x.Alien2Planet3],
                                       [x.Alien3Planet1, x.Alien3Planet2, x.Alien3Planet3],
                                       [x.Alien4Planet1, x.Alien4Planet2, x.Alien4Planet3]
-                                    ], ["Planet "+x.Planet2, "Planet "+x.Planet3]),
-                  Covered: newAliens([
+                                ]);
+                  return {
+                    Target: newAliens(visible, ["Planet "+x.Planet2, "Planet "+x.Planet3]),
+                    Covered: newAliens([
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
                                     ], ["Planet "+x.Planet2, "Planet "+x.Planet3])
-                };
+                  };
         },
         enabled: false,
         sequence: function(x){return[

@@ -132,7 +132,7 @@ againItems = [
           {pause: "key\x01"},
           TT("#Target #planetA", "They are transiting via Planet TH.", "Press Space", "tc"),
           {pause: "key\x01"},
-          TT("#sentence", "As indicated in this sentence, they lost their color during their transit on Planet TH.", "Press Space", "bc"),
+          TT("#sentence", "As indicated in this sentence, their color remained unchanged during their transit on Planet TH.", "Press Space", "bc"),
           {pause: "key\x01"},
           TT("#press_space", "Please pay attention to how the pictures and the audio description unfold before making your guess.", "Press Space", "tc"),
           {pause: "key\x01"},
@@ -181,19 +181,21 @@ againItems = [
         legend: function(row){return[row.item,row.Expt,row.Condition,row.Trigger,row.Critical,
                                      row.Predict,row.group,row.ColorTest,row.ColorFill,row.ColorCheck].join("+");},
         randomOrder: ["F","J"],
-        answers: function(x){return {
-                  Target: newAliens([ [x.Alien1Planet1, "alien_grey.png", x.Alien1Planet3],
-                                      [x.Alien2Planet1, "alien_grey.png", x.Alien2Planet3],
-                                      [x.Alien3Planet1, "alien_grey.png", x.Alien3Planet3],
-                                      [x.Alien4Planet1, "alien_grey.png", x.Alien4Planet3]
-                                    ], ["Planet "+x.Planet2, "Planet "+x.Planet3]),
-                  Covered: newAliens([
+        answers: function(x){
+                  var visible = shuffleArray([[x.Alien1Planet1, "alien_grey.png", x.Alien1Planet3],
+                                 [x.Alien2Planet1, "alien_grey.png", x.Alien2Planet3],
+                                 [x.Alien3Planet1, "alien_grey.png", x.Alien3Planet3],
+                                 [x.Alien4Planet1, "alien_grey.png", x.Alien4Planet3]
+                                ]);
+                  return {
+                    Target: newAliens(visible, ["Planet "+x.Planet2, "Planet "+x.Planet3]),
+                    Covered: newAliens([
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"]
                                     ], ["Planet "+x.Planet2, "Planet "+x.Planet3])
-                };
+                  };
         },
         enabled: false,
         sequence: function(x){return[
