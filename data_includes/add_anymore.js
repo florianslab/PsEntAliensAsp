@@ -1,4 +1,4 @@
-stopItems = [
+anymoreItems = [
 
   ["practice1", "DynamicQuestion", {
 
@@ -74,7 +74,7 @@ stopItems = [
           {pause: "key\x01"},
           // Reveal the labels under the pictures
           function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },
-          TT("#Target", "If you think the visible picture matches the description ('Exactly one alien stopped being red on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
+          TT("#Target", "If you think the visible picture matches the description ('Exactly one alien wasn't red anymore on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
           {pause: "key\x01"},
           TT("#Covered", "If you think a better match is hidden in the other picture, you press the other key (here, <b>J</b>).", "Press Space and then F or J", "tc"),
           {pause: "key\x01"},
@@ -84,10 +84,10 @@ stopItems = [
             setTimeout(function() {
               console.log(t.pressedKey);
               if ("F".match(t.pressedKey))
-                TT("#Target", "Right: in this picture, exactly one alien stopped being red on Planet ZY.", "Press Space to Proceed", "tc")(t);
+                TT("#Target", "Right: in this picture, exactly one alien wasn't red anymore on Planet ZY.", "Press Space to Proceed", "tc")(t);
               else if ("J".match(t.pressedKey))
                 TT("#Covered", "<span style='color: red;'>Wrong: you should go with the visible picture, "+
-                               "where exaclty one alien stopped being red on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
+                               "where exaclty one alien wasn't red anymore on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -154,10 +154,10 @@ stopItems = [
             setTimeout(function() {
               console.log(t.pressedKey);
               if ("J".match(t.pressedKey))
-                TT("#Covered", "Right: in the visible picture, there wasn't exactly one alien that stopped being pink on Planet XF, so the covered picture is a better guess.", "Press Space to Proceed", "tc")(t);
+                TT("#Covered", "Right: in the visible picture, there wasn't exactly one alien that wasn't pink anymore on Planet XF, so the covered picture is a better guess.", "Press Space to Proceed", "tc")(t);
               else if ("F".match(t.pressedKey))
                 TT("#Target", "<span style='color: red;'>Wrong, you should go with the covered picture, "+
-                               "which is a better guess: there wasn't exactly one alien that stopped being pink on Planet XF in the visible picture.</span>", "Press Space to Proceed", "tc")(t);
+                               "which is a better guess: there wasn't exactly one alien that wasn't pink anymore on Planet XF in the visible picture.</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -172,7 +172,7 @@ stopItems = [
 
 ].concat(
 
-  GetItemsFrom(dataStop, null, {
+  GetItemsFrom(dataAnymore, null, {
     ItemGroup: ["item","group"],
     Elements:[
       function(row){return "StopTest"+row.Expt;},

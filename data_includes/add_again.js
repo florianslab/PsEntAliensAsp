@@ -1,4 +1,4 @@
-stopItems = [
+againItems = [
 
   ["practice1", "DynamicQuestion", {
 
@@ -6,10 +6,10 @@ stopItems = [
         //randomOrder: ["F", "J"],
         randomOrder: null,
         answers: {
-                  Target: ["F", newAliens([ ["alien_red.png", "alien_red.png", "alien_yellow.png"],
-                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"],
-                                      ["alien_red.png", "alien_red.png", "alien_red.png"],
-                                      ["alien_blue.png", "alien_blue.png", "alien_red.png"]
+                  Target: ["F", newAliens([ ["alien_red.png", "alien_grey.png", "alien_red.png"],
+                                      ["alien_blue.png", "alien_grey.png", "alien_yellow.png"],
+                                      ["alien_red.png", "alien_grey.png", "alien_yellow.png"],
+                                      ["alien_blue.png", "alien_grey.png", "alien_yellow.png"]
                                     ], ["Planet FV", "Planet ZY"])],
                   Covered: ["J", newAliens([
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
@@ -24,7 +24,7 @@ stopItems = [
           TT("#bod", "This experiment is a guessing game: in every trial, you will see two pictures "+
                              "and you will have to select the one that corresponds to what you hear.", "Press Space", "mc"),
           {pause: "key\x01"},  
-          "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet FV, nothing happened to their color. Then they moved on to Planet ZY.</div>", 
+          "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet FV, they all lost their color. Then they moved on to Planet ZY.</div>", 
           {this: "answers", showKeys: "bottom"},
           "<span id='press'>Press F or J</span>",
           // First hide everything but the visible aliens
@@ -46,7 +46,7 @@ stopItems = [
           {pause: "key\x01"},
           TT("#Target #alienAlienRight2", "All the aliens were born on their Home Planet in a particular color.", "Press Space", "tr"),
           {pause: "key\x01"},
-          TT("#Target #alienAlienMiddle0", "As you can see, nothing happened to the color of these aliens while they were in transit on Planet FV.", "Press Space", "mr"),
+          TT("#Target #alienAlienMiddle0", "As you can see, all of these aliens lost their color while they were in transit on Planet FV.", "Press Space", "mr"),
           {pause: "key\x01"},
           // Reveal the context sentence
           function(t){ $("#sentence").css("visibility", "visible"); },
@@ -74,7 +74,7 @@ stopItems = [
           {pause: "key\x01"},
           // Reveal the labels under the pictures
           function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },
-          TT("#Target", "If you think the visible picture matches the description ('Exactly one alien stopped being red on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
+          TT("#Target", "If you think the visible picture matches the description ('Exactly one alien was red again on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
           {pause: "key\x01"},
           TT("#Covered", "If you think a better match is hidden in the other picture, you press the other key (here, <b>J</b>).", "Press Space and then F or J", "tc"),
           {pause: "key\x01"},
@@ -84,10 +84,10 @@ stopItems = [
             setTimeout(function() {
               console.log(t.pressedKey);
               if ("F".match(t.pressedKey))
-                TT("#Target", "Right: in this picture, exactly one alien stopped being red on Planet ZY.", "Press Space to Proceed", "tc")(t);
+                TT("#Target", "Right: in this picture, exactly one alien was red again on Planet ZY.", "Press Space to Proceed", "tc")(t);
               else if ("J".match(t.pressedKey))
                 TT("#Covered", "<span style='color: red;'>Wrong: you should go with the visible picture, "+
-                               "where exaclty one alien stopped being red on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
+                               "where exaclty one alien was red again on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -103,10 +103,10 @@ stopItems = [
         //randomOrder: ["F", "J"],
         randomOrder: null,
         answers: {
-                  Target: ["F", newAliens([ ["alien_pink.png", "alien_pink.png", "alien_orange.png"],
-                                      ["alien_green.png", "alien_green.png", "alien_pink.png"],
-                                      ["alien_pink.png", "alien_pink.png", "alien_orange.png"],
-                                      ["alien_green.png", "alien_green.png", "alien_orange.png"]
+                  Target: ["F", newAliens([ ["alien_pink.png", "alien_grey.png", "alien_pink.png"],
+                                      ["alien_green.png", "alien_grey.png", "alien_pink.png"],
+                                      ["alien_pink.png", "alien_grey.png", "alien_pink.png"],
+                                      ["alien_green.png", "alien_grey.png", "alien_orange.png"]
                                     ], ["Planet TH", "Planet XF"])],
                   Covered: ["J", newAliens([
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
@@ -120,7 +120,7 @@ stopItems = [
         sequence: [
           TT("#bod", "Let's go through a second round.", "Press Space", "mc"),
           {pause: "key\x01"},  
-          "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet TH, nothing happened to their color. Then they moved on to Planet XF.</div>", 
+          "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet TH, they all lost their color. Then they moved on to Planet XF.</div>", 
           {this: "answers", showKeys: "bottom"},
           "<span id='press' style='display:none;'>Press F or J</span>",
           $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
@@ -154,10 +154,10 @@ stopItems = [
             setTimeout(function() {
               console.log(t.pressedKey);
               if ("J".match(t.pressedKey))
-                TT("#Covered", "Right: in the visible picture, there wasn't exactly one alien that stopped being pink on Planet XF, so the covered picture is a better guess.", "Press Space to Proceed", "tc")(t);
+                TT("#Covered", "Right: in the visible picture, there wasn't exactly one alien that was pink again on Planet XF, so the covered picture is a better guess.", "Press Space to Proceed", "tc")(t);
               else if ("F".match(t.pressedKey))
                 TT("#Target", "<span style='color: red;'>Wrong, you should go with the covered picture, "+
-                               "which is a better guess: there wasn't exactly one alien that stopped being pink on Planet XF in the visible picture.</span>", "Press Space to Proceed", "tc")(t);
+                               "which is a better guess: there wasn't exactly one alien that was pink again on Planet XF in the visible picture.</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -172,7 +172,7 @@ stopItems = [
 
 ].concat(
 
-  GetItemsFrom(dataStop, null, {
+  GetItemsFrom(dataAgain, null, {
     ItemGroup: ["item","group"],
     Elements:[
       function(row){return "StopTest"+row.Expt;},
@@ -182,10 +182,10 @@ stopItems = [
                                      row.Predict,row.group,row.ColorTest,row.ColorFill,row.ColorCheck].join("+");},
         randomOrder: ["F","J"],
         answers: function(x){return {
-                  Target: newAliens([ [x.Alien1Planet1, x.Alien1Planet2, x.Alien1Planet3],
-                                      [x.Alien2Planet1, x.Alien2Planet2, x.Alien2Planet3],
-                                      [x.Alien3Planet1, x.Alien3Planet2, x.Alien3Planet3],
-                                      [x.Alien4Planet1, x.Alien4Planet2, x.Alien4Planet3]
+                  Target: newAliens([ [x.Alien1Planet1, "alien_grey.png", x.Alien1Planet3],
+                                      [x.Alien2Planet1, "alien_grey.png", x.Alien2Planet3],
+                                      [x.Alien3Planet1, "alien_grey.png", x.Alien3Planet3],
+                                      [x.Alien4Planet1, "alien_grey.png", x.Alien4Planet3]
                                     ], ["Planet "+x.Planet2, "Planet "+x.Planet3]),
                   Covered: newAliens([
                                       ["CoveredBox.png", "CoveredBox.png", "CoveredBox.png"],
@@ -197,7 +197,7 @@ stopItems = [
         },
         enabled: false,
         sequence: function(x){return[
-            "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet "+x.Planet2+", nothing happened to their color. Then they moved on to Planet "+x.Planet3+".</div>", 
+            "<div id='sentence' style='font-weight:bold;'>These four aliens had to leave their home planet. While in transit on Planet "+x.Planet2+", they all lost their color. Then they moved on to Planet "+x.Planet3+".</div>", 
             {this: "answers", showKeys: "bottom"},
             "<span id='press' style='display:none;'>Press F or J</span>",
             $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),

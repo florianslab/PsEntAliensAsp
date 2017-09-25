@@ -3,30 +3,43 @@ var Parameters = {},
 
 for (parameter in URLParameters) Parameters[URLParameters[parameter].split("=")[0]] = URLParameters[parameter].split("=")[1];
 
-var shuffleSequence = seq("instruct",startsWith("practice"),rshuffle(startsWith("Stop")));
-
 // ############################  GENERAL SETTINGS ##########################
 //
-/*
-var data;
-// Order of presentation
-if (Parameters.Trig == "Sp")
-  data = dataStop;
-else if (Parameters.Trig == "St")
-  data = dataStart;
-else if (Parameters.Trig == "Ce")
-  data = dataContinue;
-else if (Parameters.Trig == "An")
-  data = dataAgain;
-else if (Parameters.Trig == "Sl")
-  data = dataStill;
-else if (Parameters.Trig == "Ae")
-  data = dataAnymore;
+
+// Triggers
+var data = startItems, sounds = "StartSentences.zip"; // default
+if (Parameters.Trig == "Sp"){
+  data = stopItems;
+  sounds = "StopSentences.zip";
+}
+else if (Parameters.Trig == "St"){
+  data = startItems;
+  sounds = "StartSentences.zip";
+}
+else if (Parameters.Trig == "Ce"){
+  data = continueItems;
+  sounds = "ContinueSentences.zip";
+}
+else if (Parameters.Trig == "An"){
+  data = againItems;
+  sounds = "AgainSentences.zip";
+}
+else if (Parameters.Trig == "Sl"){
+  data = stillItems;
+  sounds = "StillSentences.zip";
+}
+else if (Parameters.Trig == "Ae"){
+  data = anymoreItems;
+  sounds = "AnymoreSentences.zip";
+}
+else if (Parameters.Trig == "Nl"){
+  data = nolongerItems;
+  sounds = "NoLongerSentences.zip";
+}
 
 
-var shuffleSequence = seq("instruct", "trials", "postexp");
+var shuffleSequence = seq("instruct",startsWith("practice"),rshuffle(endsWith("PsEnt")));
 var showProgressBar = true;   // show progress bar
-*/
 
 
 //var practiceItemTypes = ["practice"];
@@ -40,7 +53,7 @@ var defaults = [
 
 var zipFiles = {images: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Images.zip",
                 //sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Sentences.zip"};
-                sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/StopSentences.zip"};
+                sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/"+sounds};
 //
 // ##########################################################################
     
@@ -50,4 +63,4 @@ var items = [
 
 ];
 
-items = items.concat(stopItems);
+items = items.concat(data);
