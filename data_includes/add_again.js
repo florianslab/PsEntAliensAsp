@@ -132,7 +132,7 @@ againItems = [
           {pause: "key\x01"},
           TT("#Target #planetA", "They are transiting via Planet TH.", "Press Space", "tc"),
           {pause: "key\x01"},
-          TT("#sentence", "As indicated in this sentence, their color remained unchanged during their transit on Planet TH.", "Press Space", "bc"),
+          TT("#sentence", "As indicated in this sentence, they lost their color during their transit on Planet TH.", "Press Space", "bc"),
           {pause: "key\x01"},
           TT("#press_space", "Please pay attention to how the pictures and the audio description unfold before making your guess.", "Press Space", "tc"),
           {pause: "key\x01"},
