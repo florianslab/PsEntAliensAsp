@@ -3,6 +3,12 @@ var Parameters = {},
 
 for (parameter in URLParameters) Parameters[URLParameters[parameter].split("=")[0]] = URLParameters[parameter].split("=")[1];
 
+
+//if (!Parameters.hasOwnProperty("id")) throw new Error("Oops! It looks like you've not reached here through SONA...");
+//assert(Parameters.hasOwnProperty("id") == true, "Oops! It looks like you've not reached here through SONA...");
+//var id = Parameters.id;
+
+
 // ############################  GENERAL SETTINGS ##########################
 //
 
@@ -37,10 +43,9 @@ else if (Parameters.Trig == "Nl"){
   sounds = "NoLongerSentences.zip";
 }
 
-
-var shuffleSequence = seq("instruct",startsWith("practice"),rshuffle(endsWith("PsEnt")));
+var shuffleSequence = seq("instruct",startsWith("practice"),rshuffle(endsWith("PsEnt")),"postExp");
 var showProgressBar = true;   // show progress bar
-
+var manualSendResults = true;
 
 //var practiceItemTypes = ["practice"];
 
@@ -52,14 +57,25 @@ var defaults = [
 ];
 
 var zipFiles = {images: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Images.zip",
-                //sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/Sentences.zip"};
                 sounds: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAliens/"+sounds};
 //
 // ##########################################################################
     
 var items = [
 
+  ["instruct", "Message", {html: {include: "IbexConsentSona2017.html"}} ],  
+
   ["instruct", "ZipPreloader", {}],
+
+  ["postExp", "Form", {html: {include: "FeedbackPreConfirmation.html"}} ],
+
+  ["postExp", "__SendResults__", {
+       manualSendResults: true,
+       sendingResultsMessage: "Please wait while your answers are being saved.",
+       completionMessage: "Your answers have successfully being saved!"
+    }],
+
+  ["postExp", "Message", {html: {include: "PsEntAliensAspectual_Debriefing.html"}, transfer:null} ]
 
 ];
 

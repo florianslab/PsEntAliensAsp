@@ -182,11 +182,12 @@ continueItems = [
                                      row.Predict,row.group,row.ColorTest,row.ColorFill,row.ColorCheck].join("+");},
         randomOrder: ["F","J"],
         answers: function(x){
-                  var visible = shuffleArray([[x.Alien1Planet1, x.Alien1Planet2, x.Alien1Planet3],
+                  var visible = [[x.Alien1Planet1, x.Alien1Planet2, x.Alien1Planet3],
                                       [x.Alien2Planet1, x.Alien2Planet2, x.Alien2Planet3],
                                       [x.Alien3Planet1, x.Alien3Planet2, x.Alien3Planet3],
                                       [x.Alien4Planet1, x.Alien4Planet2, x.Alien4Planet3]
-                                ]);
+                                ];
+                  fisherYates(visible);
                   return {
                     Target: newAliens(visible, ["Planet "+x.Planet2, "Planet "+x.Planet3]),
                     Covered: newAliens([
@@ -203,16 +204,18 @@ continueItems = [
             {this: "answers", showKeys: "bottom"},
             "<span id='press' style='display:none;'>Press F or J</span>",
             $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
-            "<p style='font-size: 0.7em;'>Condition: "+x.Condition+"; Item: "+x.item+"; Group: "+x.group+"</p>",
+            //"<p style='font-size: 0.7em;'>Condition: "+x.Condition+"; Item: "+x.item+"; Group: "+x.group+"</p>",
             // First hide everything but the visible aliens
             function(t){ $("[id^=alienArrowMiddle], [id^=alienAlienRight]").css("visibility", "hidden"); },
             // Wait for a keypress
-            {pause: "key "},
+            {pause: "key ", newRT: true},
+            {pause: 150},
             // Hide the context sentence
             function(t){ $("#sentence").css("visibility", "hidden"); },
             function(t){ $("#press_space").css("display", "none"); },
             // Reveal the right aliens
             function(t){ $("[id^=alienAlienRight], [id^=alienArrowMiddle]").css("visibility", "visible"); },
+            {pause: 550},
             {audio: x.test_sound_filename},
             function(t){ $("#press").css("display", "block"); },
             function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },

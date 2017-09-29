@@ -74,7 +74,7 @@ againItems = [
           {pause: "key\x01"},
           // Reveal the labels under the pictures
           function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },
-          TT("#Target", "If you think the visible picture matches the description ('Exactly one alien was red again on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
+          TT("#Target", "If you think the picture with the visible aliens matches the description ('Exactly one alien was red again on Planet ZY'), you press the corresponding key (here, <b>F</b>).", "Press Space", "tc"),
           {pause: "key\x01"},
           TT("#Covered", "If you think a better match is hidden in the other picture, you press the other key (here, <b>J</b>).", "Press Space and then F or J", "tc"),
           {pause: "key\x01"},
@@ -86,8 +86,8 @@ againItems = [
               if ("F".match(t.pressedKey))
                 TT("#Target", "Right: in this picture, exactly one alien was red again on Planet ZY.", "Press Space to Proceed", "tc")(t);
               else if ("J".match(t.pressedKey))
-                TT("#Covered", "<span style='color: red;'>Wrong: you should go with the visible picture, "+
-                               "where exaclty one alien was red again on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
+                TT("#Covered", "<span style='color: red;'>Wrong: you should go with the picture with the visible aliens, "+
+                               "where exactly one alien was red again on Planet ZY</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -144,9 +144,9 @@ againItems = [
           {audio: "practice2.wav", waitFor: true},
           function(t){ $("#press").css("display", "block"); },
           function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },
-          TT("#Target", "If you think the visible picture matches the description, press <b>F</b>.", "Press Space", "tc"),
+          TT("#Target", "If you think the picture with the visible aliens matches the description, press <b>F</b>.", "Press Space", "tc"),
           {pause: "key\x01"},
-          TT("#Covered", "If you think a better match is hidden in the covered picture, press <b>J</b>.", "Press Space and then F or J", "tc"),
+          TT("#Covered", "If you think the picture with the hidden aliens is a better guess, press <b>J</b>.", "Press Space and then F or J", "tc"),
           {pause: "key\x01"},
           {pause: "keyFJ"},
           // Printing a feedback in function to what key the participant just pressed
@@ -154,10 +154,10 @@ againItems = [
             setTimeout(function() {
               console.log(t.pressedKey);
               if ("J".match(t.pressedKey))
-                TT("#Covered", "Right: in the visible picture, there wasn't exactly one alien that was pink again on Planet XF, so the covered picture is a better guess.", "Press Space to Proceed", "tc")(t);
+                TT("#Covered", "Right: in the picture with the visible aliens, there wasn't exactly one alien that was pink again on Planet XF, so the picture with the hidden aliens is a better guess.", "Press Space to Proceed", "tc")(t);
               else if ("F".match(t.pressedKey))
-                TT("#Target", "<span style='color: red;'>Wrong, you should go with the covered picture, "+
-                               "which is a better guess: there wasn't exactly one alien that was pink again on Planet XF in the visible picture.</span>", "Press Space to Proceed", "tc")(t);
+                TT("#Target", "<span style='color: red;'>Wrong, you should go with the picture with the hidden aliens, "+
+                               "which is a better guess: there wasn't exactly one alien that was pink again on Planet XF in the picture with the visible aliens.</span>", "Press Space to Proceed", "tc")(t);
             }, 12);
           },
           {pause: "key\x01"}
@@ -182,11 +182,12 @@ againItems = [
                                      row.Predict,row.group,row.ColorTest,row.ColorFill,row.ColorCheck].join("+");},
         randomOrder: ["F","J"],
         answers: function(x){
-                  var visible = shuffleArray([[x.Alien1Planet1, "alien_grey.png", x.Alien1Planet3],
+                  var visible = [[x.Alien1Planet1, "alien_grey.png", x.Alien1Planet3],
                                  [x.Alien2Planet1, "alien_grey.png", x.Alien2Planet3],
                                  [x.Alien3Planet1, "alien_grey.png", x.Alien3Planet3],
                                  [x.Alien4Planet1, "alien_grey.png", x.Alien4Planet3]
-                                ]);
+                                ];
+                  fisherYates(visible);
                   return {
                     Target: newAliens(visible, ["Planet "+x.Planet2, "Planet "+x.Planet3]),
                     Covered: newAliens([
@@ -203,16 +204,18 @@ againItems = [
             {this: "answers", showKeys: "bottom"},
             "<span id='press' style='display:none;'>Press F or J</span>",
             $("<p id='press_space'>Press space.</p>").css({"font-style":"italic", "text-align": "center"}),
-            "<p style='font-size: 0.7em;'>Condition: "+x.Condition+"; Item: "+x.item+"; Group: "+x.group+"</p>",
+            //"<p style='font-size: 0.7em;'>Condition: "+x.Condition+"; Item: "+x.item+"; Group: "+x.group+"</p>",
             // First hide everything but the visible aliens
             function(t){ $("[id^=alienArrowMiddle], [id^=alienAlienRight]").css("visibility", "hidden"); },
             // Wait for a keypress
-            {pause: "key "},
+            {pause: "key ", newRT: true},
+            {pause: 150},
             // Hide the context sentence
             function(t){ $("#sentence").css("visibility", "hidden"); },
             function(t){ $("#press_space").css("display", "none"); },
             // Reveal the right aliens
             function(t){ $("[id^=alienAlienRight], [id^=alienArrowMiddle]").css("visibility", "visible"); },
+            {pause: 550},
             {audio: x.test_sound_filename},
             function(t){ $("#press").css("display", "block"); },
             function(t){ $(".DynamicQuestion-keyLabel").css("visibility", "visible"); },
