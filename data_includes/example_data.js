@@ -5,8 +5,8 @@ for (parameter in URLParameters) Parameters[URLParameters[parameter].split("=")[
 
 
 //if (!Parameters.hasOwnProperty("id")) throw new Error("Oops! It looks like you've not reached here through SONA...");
-//assert(Parameters.hasOwnProperty("id") == true, "Oops! It looks like you've not reached here through SONA...");
-//var id = Parameters.id;
+assert(Parameters.hasOwnProperty("id") == true, "Oops! It looks like you've not reached here through SONA...");
+var id = Parameters.id;
 
 
 // ############################  GENERAL SETTINGS ##########################
@@ -62,6 +62,8 @@ var zipFiles = {images: "http://files.lab.florianschwarz.net/ibexfiles/PsEntAlie
 // ##########################################################################
     
 var items = [
+
+  ["instruct", "__SetCounter__", {}],
 
   ["instruct", "Message", {html: {include: "IbexConsentSona2017.html"}} ],  
 

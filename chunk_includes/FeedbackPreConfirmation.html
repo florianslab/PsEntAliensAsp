@@ -24,7 +24,7 @@
 <input name="id" type="text" value="" id="id" style='display:none;' />
 
 <script>
-  if (typeof __counter_value_from_server__ == "number") 
-  	document.getElementById("id").value = ""+__counter_value_from_server__;
+  if (typeof id != "undefined") 
+  	document.getElementById("id").value = ""+id;
 </script>
 </div></body></html>
